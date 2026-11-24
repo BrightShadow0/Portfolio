@@ -21,4 +21,3 @@ A static site suitable for GitHub Pages. Deploy the `main` branch from the repos
 
 - Email: sheldonpmenezes@gmail.com
 - GitHub: https://github.com/BrightShadow0
-- YouTube: https://youtube.com/@johnrodeditz
