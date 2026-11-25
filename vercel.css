@@ -1,0 +1,31 @@
+/* Vercel-style override layer */
+:root{--bg:#000;--bg-lift:#0a0a0a;--hairline:#ffffff17;--pill-border:#ffffff2e;--nav-bg:#000000a6;--accent:#c3f588;--grain-opacity:0}
+body{background:#000;letter-spacing:-.011em}
+body:after{display:none}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+ background:radial-gradient(60% 45% at 50% -8%,#c3f58824,transparent 70%),
+ linear-gradient(#ffffff08 1px,transparent 1px) 0 0/72px 72px,linear-gradient(90deg,#ffffff08 1px,transparent 1px) 0 0/72px 72px;
+ -webkit-mask-image:radial-gradient(80% 60% at 50% 0,#000 20%,transparent 80%);mask-image:radial-gradient(80% 60% at 50% 0,#000 20%,transparent 80%)}
+.hero h1{letter-spacing:-.05em;font-weight:700;background:linear-gradient(180deg,#fff 30%,#ffffff8c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 em{-webkit-text-fill-color:var(--accent);color:var(--accent)}
+.kicker{display:inline-block}
+.kicker span{border:1px solid var(--pill-border);border-radius:999px;padding:.35rem .8rem;background:#ffffff08;font-size:.68rem;letter-spacing:.14em}
+body>nav{border-bottom-color:#ffffff14}
+.row,.card,article{border-radius:10px}
+.row{border:1px solid transparent;border-bottom-color:var(--hairline);transition:background .25s,border-color .25s,transform .25s}
+.row:hover{background:#ffffff08;border-color:#ffffff24;transform:translateY(-2px)}
+.quick a{transition:all .2s}
+.quick a:hover{box-shadow:0 0 0 4px #ffffff14}
+.cta-btn{transition:transform .2s,box-shadow .2s}.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px #c3f58833}
+/* animations */
+@keyframes vIn{from{opacity:0;transform:translateY(18px);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
+.hero-in{animation:vIn .8s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--d,0s)}
+.vr{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);transition-delay:var(--vd,0s)}
+.vr.vin{opacity:1;transform:none}
+header.hero h1.hero-in{margin-bottom:24px}
+/* index only: headline first, kicker under it */
+body.home-order header.hero>div{display:flex;flex-direction:column;align-items:flex-start}
+body.home-order header.hero h1{order:1;margin-bottom:18px}
+body.home-order header.hero .kicker{order:2;margin-bottom:0}
+@media (prefers-reduced-motion:reduce){.hero-in,.vr{animation:none;transition:none;opacity:1;transform:none;filter:none}}
+.hero h1 .sur{background:linear-gradient(100deg,#c3f588 0%,#7be0a4 45%,#4cc9f0 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 0 28px #c3f58840)}
