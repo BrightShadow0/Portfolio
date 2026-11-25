@@ -10,7 +10,7 @@ body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 .hero h1 em{-webkit-text-fill-color:var(--accent);color:var(--accent)}
 .kicker{display:inline-block}
 .kicker span{border:1px solid var(--pill-border);border-radius:999px;padding:.35rem .8rem;background:#ffffff08;font-size:.68rem;letter-spacing:.14em}
-\n/* Keep both hero name parts the same white; remove the surname gradient and glow. */\n.hero h1 .sur{background:none;-webkit-background-clip:initial;background-clip:initial;-webkit-text-fill-color:#fff;color:#fff;filter:none}
+
 body>nav{border-bottom-color:#ffffff14}
 .row,.card,article{border-radius:10px}
 .row{border:1px solid transparent;border-bottom-color:var(--hairline);transition:background .25s,border-color .25s,transform .25s}
@@ -29,4 +29,4 @@ body.home-order header.hero>div{display:flex;flex-direction:column;align-items:f
 body.home-order header.hero h1{order:1;margin-bottom:18px}
 body.home-order header.hero .kicker{order:2;margin-bottom:0}
 @media (prefers-reduced-motion:reduce){.hero-in,.vr{animation:none;transition:none;opacity:1;transform:none;filter:none}}
-.hero h1 .sur{background:linear-gradient(100deg,#c3f588 0%,#7be0a4 45%,#4cc9f0 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 0 28px #c3f58840)}
+.hero h1 .sur{background:none;-webkit-background-clip:initial;background-clip:initial;-webkit-text-fill-color:#fff;color:#fff;filter:none}
