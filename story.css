@@ -355,3 +355,5 @@ body.flat .finale{padding:160px 0}
   mask-image:var(--lit),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M100 14 C106 32 180 78 180 114 C180 150 140 172 110 150 C109 166 111 177 119 185 L100 185 L81 185 C89 177 91 166 90 150 C60 172 20 150 20 114 C20 78 94 32 100 14 Z' transform=%22translate%28100 101%29 scale%28.82%29 translate%28-100 -101%29%22 fill='none' stroke='%23000' stroke-width='12' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 body.mark-white .mark::before,body.mark-white .mark::after{--rim:conic-gradient(from calc(var(--ang,0) * 1deg - 55deg),#fff 0deg,#9ca3af 35deg,#fff 70deg,#6b7280 110deg,#fff 111deg)}
+
+.spot{display:none}
