@@ -421,9 +421,9 @@ html{scrollbar-width:thin;scrollbar-color:#22d3ee47 #050505}
 .mark::before,.mark::after{--rim:linear-gradient(#fff,#fff)}
 .mark-orbit{--rim-g:linear-gradient(#fff,#fff)}
 .mark-orbit .gr i{background:linear-gradient(#fff,#fff);filter:brightness(1.2)}
-body.mark-white .mark::before,body.mark-white .mark::after{--rim:conic-gradient(from 0deg at 50% 52%,hsl(52 100% 60%) 0deg,hsl(30 100% 60%) 40deg,hsl(5 100% 60%) 75deg,hsl(335 100% 60%) 105deg,hsl(285 100% 60%) 130deg,hsl(250 100% 60%) 155deg,hsl(220 100% 60%) 180deg,hsl(195 100% 60%) 215deg,hsl(165 100% 60%) 245deg,hsl(110 100% 60%) 270deg,hsl(75 100% 60%) 320deg,hsl(52 100% 60%) 360deg)}
-body.mark-white .mark-orbit{--rim-g:conic-gradient(from 0deg at 50% 52%,hsl(52 100% 60%) 0deg,hsl(30 100% 60%) 40deg,hsl(5 100% 60%) 75deg,hsl(335 100% 60%) 105deg,hsl(285 100% 60%) 130deg,hsl(250 100% 60%) 155deg,hsl(220 100% 60%) 180deg,hsl(195 100% 60%) 215deg,hsl(165 100% 60%) 245deg,hsl(110 100% 60%) 270deg,hsl(75 100% 60%) 320deg,hsl(52 100% 60%) 360deg)}
-body.mark-white .mark-orbit .gr i{background:conic-gradient(from 0deg at 50% 52%,hsl(52 100% 60%) 0deg,hsl(30 100% 60%) 40deg,hsl(5 100% 60%) 75deg,hsl(335 100% 60%) 105deg,hsl(285 100% 60%) 130deg,hsl(250 100% 60%) 155deg,hsl(220 100% 60%) 180deg,hsl(195 100% 60%) 215deg,hsl(165 100% 60%) 245deg,hsl(110 100% 60%) 270deg,hsl(75 100% 60%) 320deg,hsl(52 100% 60%) 360deg)}
+body.mark-white .mark::before,body.mark-white .mark::after{--rim:conic-gradient(from 0deg at 50% 52%,hsl(52 100% 50%) 0deg,hsl(30 100% 50%) 40deg,hsl(0 100% 50%) 75deg,hsl(335 100% 50%) 105deg,hsl(285 100% 50%) 130deg,hsl(250 100% 50%) 155deg,hsl(220 100% 50%) 180deg,hsl(195 100% 50%) 215deg,hsl(165 100% 50%) 245deg,hsl(110 100% 50%) 270deg,hsl(75 100% 50%) 320deg,hsl(52 100% 50%) 360deg)}
+body.mark-white .mark-orbit{--rim-g:conic-gradient(from 0deg at 50% 52%,hsl(52 100% 50%) 0deg,hsl(30 100% 50%) 40deg,hsl(0 100% 50%) 75deg,hsl(335 100% 50%) 105deg,hsl(285 100% 50%) 130deg,hsl(250 100% 50%) 155deg,hsl(220 100% 50%) 180deg,hsl(195 100% 50%) 215deg,hsl(165 100% 50%) 245deg,hsl(110 100% 50%) 270deg,hsl(75 100% 50%) 320deg,hsl(52 100% 50%) 360deg)}
+body.mark-white .mark-orbit .gr i{background:conic-gradient(from 0deg at 50% 52%,hsl(52 100% 50%) 0deg,hsl(30 100% 50%) 40deg,hsl(0 100% 50%) 75deg,hsl(335 100% 50%) 105deg,hsl(285 100% 50%) 130deg,hsl(250 100% 50%) 155deg,hsl(220 100% 50%) 180deg,hsl(195 100% 50%) 215deg,hsl(165 100% 50%) 245deg,hsl(110 100% 50%) 270deg,hsl(75 100% 50%) 320deg,hsl(52 100% 50%) 360deg)}
 .mark-orbit .gr.gr0{filter:blur(2px);opacity:.4}
 .mark-orbit .gr.gr1{filter:blur(12px);opacity:.5}
 .mark::after{filter:brightness(calc(1.25 + var(--lvl,.42) * .9))}
@@ -454,3 +454,6 @@ body.mark-white .mark-orbit .glow i{filter:brightness(calc(1.5 + var(--lvl,.42) 
 body.mark-white .mark::after{filter:brightness(calc(1.3 + var(--lvl,.42) * .7)) saturate(3)}
 body.mark-white .mark-orbit .gr i{filter:brightness(1.3) saturate(3)}
 body.mark-white .mark-orbit .glow{opacity:1}
+/* v14: true reds, less wash */
+body.mark-white .mark-orbit .glow i{filter:brightness(calc(1.25 + var(--lvl,.42) * .6)) saturate(3)}
+body.mark-white .mark::after{filter:brightness(calc(1.15 + var(--lvl,.42) * .6)) saturate(3)}
