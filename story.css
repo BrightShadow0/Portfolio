@@ -385,3 +385,7 @@ body.mark-white .mark-orbit{--rim-g:conic-gradient(from calc(var(--ang,0) * 1deg
   opacity:calc(.22 + var(--lvl,.5) * .4)}
 body.flat .mark-orbit .glow{left:66px;top:66px}
 @media (prefers-reduced-motion:reduce){.mark-orbit .glow{left:66px;top:66px}}
+
+/* ---- nav exit: one clean motion (fade + slide up), no staged morph ---- */
+.classic-nav{transition:transform .38s cubic-bezier(.4,0,.2,1),opacity .38s cubic-bezier(.4,0,.2,1)}
+body.nav-away .classic-nav{transform:translateY(-100%);opacity:0;pointer-events:none}
