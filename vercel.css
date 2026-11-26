@@ -30,3 +30,6 @@ body.home-order header.hero h1{order:1;margin-bottom:18px}
 body.home-order header.hero .kicker{order:2;margin-bottom:0}
 @media (prefers-reduced-motion:reduce){.hero-in,.vr{animation:none;transition:none;opacity:1;transform:none;filter:none}}
 .hero h1 .sur{background:none;-webkit-background-clip:initial;background-clip:initial;-webkit-text-fill-color:#fff;color:#fff;filter:none}
+/* scrollytelling mode entry */
+.nav-links a.story-toggle{border:1px solid var(--pill-border);border-radius:999px;color:var(--accent)}
+.nav-links a.story-toggle:hover{border-color:var(--accent);background:#ffffff0d}
