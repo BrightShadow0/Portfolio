@@ -408,3 +408,7 @@ html{scrollbar-width:thin;scrollbar-color:#22d3ee47 #050505}
 ::-webkit-scrollbar-track{background:#050505}
 ::-webkit-scrollbar-thumb{background:#22d3ee40;border-radius:8px;border:2px solid #050505}
 ::-webkit-scrollbar-thumb:hover{background:#22d3ee80}
+/* v7: baseline outline is a full, clearly visible spectrum strip */
+.mark-orbit .gr{opacity:.95}
+.mark-orbit .gr.gr1{opacity:.45}
+.mark-orbit .gr i{filter:brightness(1.15) saturate(1.1)}
