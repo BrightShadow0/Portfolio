@@ -408,11 +408,3 @@ html{scrollbar-width:thin;scrollbar-color:#22d3ee47 #050505}
 ::-webkit-scrollbar-track{background:#050505}
 ::-webkit-scrollbar-thumb{background:#22d3ee40;border-radius:8px;border:2px solid #050505}
 ::-webkit-scrollbar-thumb:hover{background:#22d3ee80}
-
-/* ---- v5: baseline is white/grayscale; rainbow only after the click toggle ---- */
-.mark::before,.mark::after{--rim:conic-gradient(from calc(var(--ang,0) * 1deg - 55deg),#fff 0deg,#9ca3af 35deg,#fff 70deg,#6b7280 110deg,#fff 111deg)}
-.mark-orbit{--rim-g:conic-gradient(from calc(var(--ang,0) * 1deg - 75deg),#fff 0deg,#cbd5e1 60deg,#fff 100deg,#9ca3af 150deg,#fff 151deg)}
-.mark-orbit .gr i{background:conic-gradient(from calc(var(--ang,0) * 1deg),#fff,#9ca3af,#fff,#6b7280,#fff)}
-body.mark-white .mark::before,body.mark-white .mark::after{--rim:conic-gradient(from calc(var(--ang,0) * 1deg - 55deg),#ff2e88 0deg,#a855f7 25deg,#3b82f6 50deg,#22d3ee 70deg,#34d399 90deg,#fde047 110deg,#ff2e88 111deg)}
-body.mark-white .mark-orbit{--rim-g:conic-gradient(from calc(var(--ang,0) * 1deg - 75deg),#ff2e88 0deg,#a855f7 36deg,#3b82f6 72deg,#22d3ee 100deg,#34d399 126deg,#fde047 150deg,#ff2e88 151deg)}
-body.mark-white .mark-orbit .gr i{background:conic-gradient(from calc(var(--ang,0) * 1deg + 20deg),#ff2e88,#a855f7,#3b82f6,#22d3ee,#34d399,#fde047,#ff2e88)}
