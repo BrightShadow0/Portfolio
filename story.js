@@ -31,6 +31,26 @@ var markOrbit = document.querySelector('.mark-orbit');
 var beats = Array.prototype.slice.call(document.querySelectorAll('.beat'));
 var hint = document.querySelector('.scroll-hint');
 
+/* ---- orb light: rainbow when the pointer is near, white once clicked ---- */
+var markEl = document.querySelector('.mark');
+function markPoint(e){
+ var r = markEl.getBoundingClientRect();
+ return { d: Math.hypot(e.clientX - (r.left + r.width/2), e.clientY - (r.top + r.height/2)), r: r.width/2 };
+}
+if (markEl && !coarse) {
+ addEventListener('pointermove', function(e){
+ if (flatMode) return;
+ var m = markPoint(e);
+ var n = Math.max(0, Math.min(1, 1 - (m.d - m.r) / 260));
+ markOrbit.style.setProperty('--near', n.toFixed(2));
+ }, {passive:true});
+ addEventListener('click', function(e){
+ var m = markPoint(e);
+ if (m.r > 0 && m.d <= m.r * 1.1 && parseFloat(markOrbit.style.opacity || '1') > 0.5) body.classList.toggle('mark-white');
+ });
+}
+
+
 function ease(t){ return t<0?0:t>1?1:t*t*(3-2*t); }
 
 function pinUpdate(){
