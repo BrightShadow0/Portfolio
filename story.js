@@ -28,7 +28,6 @@ if (!reduce && !coarse && spot){
 /* ---- intro pin ---- */
 var pin = document.querySelector('.pin');
 var markOrbit = document.querySelector('.mark-orbit');
-var markShadow = document.querySelector('.mark-shadow');
 var beats = Array.prototype.slice.call(document.querySelectorAll('.beat'));
 var hint = document.querySelector('.scroll-hint');
 
@@ -40,14 +39,12 @@ function pinUpdate(){
   var total = pin.offsetHeight - innerHeight;
   var p = forceP !== null ? forceP : ease(Math.min(1, Math.max(0, -r.top / total)));
 
-  /* mark: shadow sweeps around, mark drifts + breathes, then shrinks away */
-  var shadowDeg = 115 + p * 300;                       /* shadow sweeps as you scroll */
+  /* mark: drifts + breathes, then shrinks away */
   var drift = Math.sin(p * Math.PI) * -26;             /* slight rise mid-sequence */
   var settle = ease(Math.min(1, Math.max(0, (p - 0.86) / 0.14))); /* final settle */
   var scale = 1 - settle * 0.55;
   markOrbit.style.transform = 'translateY(' + (drift - settle * 60) + 'px) scale(' + scale + ')';
   markOrbit.style.opacity = String(1 - settle);
-  markShadow.style.transform = 'rotate(' + shadowDeg + 'deg) translate(66px,-32px)';
 
   /* beats: four caption beats across the pin */
   var windows = [[0.04,0.22],[0.30,0.48],[0.56,0.74],[0.80,0.93]];
