@@ -360,25 +360,26 @@ body.flat .finale{padding:160px 0}
 
 
 /* orb light: a thin rainbow rim traces the edge nearest the pointer; white after a click */
-.mark{transition:box-shadow .5s,background .5s}
+.mark{transition:box-shadow .25s,background .5s;
+  box-shadow:0 0 60px color-mix(in srgb,var(--accent) calc(45% * (1 - var(--near,0) * .85)),transparent),0 0 160px color-mix(in srgb,var(--accent) calc(22% * (1 - var(--near,0) * .85)),transparent)}
 .mark::before,.mark::after{
   content:"";position:absolute;pointer-events:none;border-radius:50%;
   --lit:conic-gradient(from calc(var(--ang,0) * 1deg - 75deg),transparent,#000 75deg,transparent 150deg);
   --rim:conic-gradient(from calc(var(--ang,0) * 1deg - 100deg),#ff2e88,#a855f7,#3b82f6,#22d3ee,#34d399,#fde047,#ff2e88);
-  opacity:var(--near,0);transition:opacity .3s;
+  opacity:calc(var(--near,0) * 1.5);transition:opacity .25s;
 }
 .mark::after{
-  inset:-4px;background:var(--rim);
-  -webkit-mask:radial-gradient(closest-side,transparent calc(100% - 3px),#000 calc(100% - 2px)),var(--lit);
+  inset:-6px;background:var(--rim);
+  -webkit-mask:radial-gradient(closest-side,transparent calc(100% - 5px),#000 calc(100% - 4px)),var(--lit);
   -webkit-mask-composite:source-in;
-  mask:radial-gradient(closest-side,transparent calc(100% - 3px),#000 calc(100% - 2px)),var(--lit);
+  mask:radial-gradient(closest-side,transparent calc(100% - 5px),#000 calc(100% - 4px)),var(--lit);
   mask-composite:intersect;
 }
 .mark::before{
-  inset:-12px;background:var(--rim);filter:blur(14px);
-  -webkit-mask:radial-gradient(closest-side,transparent 70%,#000 88%,transparent 100%),var(--lit);
+  inset:-22px;background:var(--rim);filter:blur(16px);
+  -webkit-mask:radial-gradient(closest-side,transparent 62%,#000 84%,transparent 100%),var(--lit);
   -webkit-mask-composite:source-in;
-  mask:radial-gradient(closest-side,transparent 70%,#000 88%,transparent 100%),var(--lit);
+  mask:radial-gradient(closest-side,transparent 62%,#000 84%,transparent 100%),var(--lit);
   mask-composite:intersect;
 }
 body.mark-white .mark{
