@@ -41,8 +41,10 @@ if (markEl && !coarse) {
  addEventListener('pointermove', function(e){
  if (flatMode) return;
  var m = markPoint(e);
- var n = Math.max(0, Math.min(1, 1 - (m.d - m.r) / 260));
+ var n = Math.max(0, Math.min(1, 1 - (m.d - m.r) / 220));
  markOrbit.style.setProperty('--near', n.toFixed(2));
+ var rr = markEl.getBoundingClientRect();
+ markOrbit.style.setProperty('--ang', (Math.atan2(e.clientX - (rr.left + rr.width/2), -(e.clientY - (rr.top + rr.height/2))) * 180 / Math.PI).toFixed(1));
  }, {passive:true});
  addEventListener('click', function(e){
  var m = markPoint(e);
