@@ -364,3 +364,24 @@ body.mark-white .mark::before,body.mark-white .mark::after{--rim:conic-gradient(
   .classic-nav .nav-inner{width:100%;padding-inline:10px;justify-content:space-between;gap:0}
   .classic-nav a{padding:.35rem .35rem;font-size:.74rem}
 }
+
+/* orb light v2: the spade is the source. Crisp bright rim core, plus blurred copies of the lit section
+   that spill outward into the dark (blur sits on a parent so it is not clipped by the shape mask) */
+.mark-orbit{--fill:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M100 14 C106 32 180 78 180 114 C180 150 140 172 110 150 C109 166 111 177 119 185 L100 185 L81 185 C89 177 91 166 90 150 C60 172 20 150 20 114 C20 78 94 32 100 14 Z' transform=%22translate%28100 101%29 scale%28.82%29 translate%28-100 -101%29%22 fill='%23000'/%3E%3C/svg%3E");
+ --lit-w:conic-gradient(from calc(var(--ang,0) * 1deg - 75deg),transparent,#000 75deg,transparent 150deg);
+ --rim-g:conic-gradient(from calc(var(--ang,0) * 1deg - 75deg),#ff2e88 0deg,#a855f7 36deg,#3b82f6 72deg,#22d3ee 100deg,#34d399 126deg,#fde047 150deg,#ff2e88 151deg)}
+body.mark-white .mark-orbit{--rim-g:conic-gradient(from calc(var(--ang,0) * 1deg - 75deg),#fff 0deg,#cbd5e1 60deg,#fff 100deg,#9ca3af 150deg,#fff 151deg)}
+.mark-orbit .glow{position:absolute;left:0;top:0;width:132px;height:132px;pointer-events:none;transform:translate(-50%,-50%) scale(var(--s,1))}
+.mark-orbit .glow i{position:absolute;inset:0;background:var(--rim-g);filter:brightness(1.9) saturate(1.35);
+  -webkit-mask-image:var(--lit-w),var(--fill);mask-image:var(--lit-w),var(--fill);
+  -webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-composite:source-in;mask-composite:intersect}
+.mark-orbit .g1{--s:1.08;filter:blur(8px);opacity:1}
+.mark-orbit .g2{--s:1.45;filter:blur(28px);opacity:1}
+.mark-orbit .g3{--s:2.5;filter:blur(64px);opacity:1}
+/* bright rim core, still thin; inner glow on the body near the lit part */
+.mark::after{filter:brightness(1.55) saturate(1.15);opacity:calc(.85 + var(--lvl,.5) * .15)}
+.mark::before{filter:none;
+  -webkit-mask-image:var(--lit),var(--fill),radial-gradient(circle at 50% 52%,transparent 38%,#000 92%);mask-image:var(--lit),var(--fill),radial-gradient(circle at 50% 52%,transparent 38%,#000 92%);
+  opacity:calc(.22 + var(--lvl,.5) * .4)}
+body.flat .mark-orbit .glow{left:66px;top:66px}
+@media (prefers-reduced-motion:reduce){.mark-orbit .glow{left:66px;top:66px}}
