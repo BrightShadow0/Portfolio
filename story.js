@@ -45,6 +45,13 @@ function pointerInfo(){
  } catch (err) {}
  return { d: Math.hypot(dx, dy), r: r.width/2, ang: Math.atan2(dx, -dy) * 180 / Math.PI, inside: inside };
 }
+/* glow layers: blur lives on a parent so the spill is not clipped by the spade-shaped mask */
+if (markEl && !markOrbit.querySelector('.glow')) {
+ ['g3','g2','g1'].forEach(function(c){
+ var g = document.createElement('div'); g.className = 'glow ' + c; g.setAttribute('aria-hidden','true');
+ g.appendChild(document.createElement('i')); markOrbit.insertBefore(g, markEl);
+ });
+}
 function lightTick(t){
  requestAnimationFrame(lightTick);
  if (!markEl || !pin || pin.getBoundingClientRect().bottom < 0) return;
