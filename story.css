@@ -81,13 +81,7 @@ body.nav-away .classic-nav{transform:translateY(110%);opacity:0;pointer-events:n
   box-shadow:0 12px 40px #00000080;
 }
 body.nav-away .dock{transform:translate(-50%,0);opacity:1;pointer-events:auto}
-.dock .mark-mini{
-  width:26px;height:26px;border-radius:50%;flex:none;margin-right:2px;
-  display:grid;place-items:center;
-  font-family:var(--mono);font-weight:700;font-size:.58rem;color:#001318;
-  background:radial-gradient(circle at 35% 30%,#fff,var(--accent) 62%);
-  box-shadow:0 0 14px color-mix(in srgb,var(--accent) 55%,transparent);
-}
+.dock .mark-mini{width:26px;height:26px;flex:none;margin-right:2px;border-radius:7px;display:block}
 .dock a{
   font-size:.74rem;color:var(--ink-dim);padding:.32rem .62rem;border-radius:999px;
   transition:color .2s,background .2s;white-space:nowrap;
@@ -124,17 +118,8 @@ body.nav-away .dots{opacity:1}
   display:grid;place-items:center;
 }
 .mark-orbit{position:relative;width:0;height:0;will-change:transform}
-.mark{
-  position:absolute;left:0;top:0;transform:translate(-50%,-50%);
-  width:132px;height:132px;border-radius:50%;
-  display:grid;place-items:center;
-  font-family:var(--mono);font-weight:700;font-size:2rem;letter-spacing:-.04em;color:#001318;
-  background:radial-gradient(circle at 36% 30%,#ffffff 8%,color-mix(in srgb,var(--accent) 82%,#fff) 46%,var(--accent) 78%);
-  box-shadow:
-    0 0 60px color-mix(in srgb,var(--accent) 45%,transparent),
-    0 0 160px color-mix(in srgb,var(--accent) 22%,transparent);
-  will-change:transform;
-}
+.mark{position:absolute;left:0;top:0;transform:translate(-50%,-50%);width:132px;height:132px;will-change:transform}
+.mark svg{display:block;width:100%;height:100%;overflow:visible}
 .mark-halo{
   position:absolute;left:0;top:0;transform:translate(-50%,-50%);
   width:480px;height:480px;border-radius:50%;pointer-events:none;
@@ -169,16 +154,8 @@ body.nav-away .dots{opacity:1}
 @keyframes hintDrop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* the mark, settled into the background for the rest of the page */
-.watermark{
-  position:fixed;right:-8vmin;bottom:-10vmin;z-index:-1;pointer-events:none;
-  width:44vmin;height:44vmin;border-radius:50%;
-  display:grid;place-items:center;
-  font-family:var(--mono);font-weight:700;font-size:7vmin;color:#001318;
-  background:radial-gradient(circle at 36% 30%,#ffffff 8%,color-mix(in srgb,var(--accent) 82%,#fff) 46%,var(--accent) 78%);
-  box-shadow:0 0 120px color-mix(in srgb,var(--accent) 30%,transparent);
-  opacity:0;filter:blur(1px);
-  transition:opacity 1s;
-}
+.watermark{position:fixed;right:-8vmin;bottom:-10vmin;z-index:-1;pointer-events:none;width:44vmin;height:44vmin;opacity:0;transition:opacity 1s}
+.watermark svg{display:block;width:100%;height:100%}
 body.mark-settled .watermark{opacity:.07}
 
 /* ===== chapters ===== */
@@ -359,31 +336,22 @@ body.flat .finale{padding:160px 0}
 }
 
 
-/* orb light: a thin rainbow rim traces the edge nearest the pointer; white after a click */
-.mark{transition:box-shadow .25s,background .5s;
-  box-shadow:0 0 60px color-mix(in srgb,var(--accent) calc(45% * (1 - var(--near,0) * .85)),transparent),0 0 160px color-mix(in srgb,var(--accent) calc(22% * (1 - var(--near,0) * .85)),transparent)}
+/* orb light: a thin rainbow rim traces the spade edge nearest the pointer; white after a click */
 .mark::before,.mark::after{
-  content:"";position:absolute;pointer-events:none;border-radius:50%;
-  --lit:conic-gradient(from calc(var(--ang,0) * 1deg - 75deg),transparent,#000 75deg,transparent 150deg);
-  --rim:conic-gradient(from calc(var(--ang,0) * 1deg - 100deg),#ff2e88,#a855f7,#3b82f6,#22d3ee,#34d399,#fde047,#ff2e88);
-  opacity:calc(var(--near,0) * 1.5);transition:opacity .25s;
+  content:"";position:absolute;inset:0;pointer-events:none;
+  --lit:conic-gradient(from calc(var(--ang,0) * 1deg - 55deg),transparent,#000 55deg,transparent 110deg);
+  --rim:conic-gradient(from calc(var(--ang,0) * 1deg - 55deg),#ff2e88 0deg,#a855f7 25deg,#3b82f6 50deg,#22d3ee 70deg,#34d399 90deg,#fde047 110deg,#ff2e88 111deg);
+  background:var(--rim);opacity:var(--lvl,.5);transition:opacity .25s;
+  -webkit-mask-size:100% 100%;mask-size:100% 100%;
+  -webkit-mask-composite:source-in;mask-composite:intersect;
 }
 .mark::after{
-  inset:-6px;background:var(--rim);
-  -webkit-mask:radial-gradient(closest-side,transparent calc(100% - 5px),#000 calc(100% - 4px)),var(--lit);
-  -webkit-mask-composite:source-in;
-  mask:radial-gradient(closest-side,transparent calc(100% - 5px),#000 calc(100% - 4px)),var(--lit);
-  mask-composite:intersect;
+  -webkit-mask-image:var(--lit),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M100 14 C106 32 180 78 180 114 C180 150 140 172 110 150 C109 166 111 177 119 185 L100 185 L81 185 C89 177 91 166 90 150 C60 172 20 150 20 114 C20 78 94 32 100 14 Z' transform=%22translate%28100 101%29 scale%28.82%29 translate%28-100 -101%29%22 fill='none' stroke='%23000' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E");
+  mask-image:var(--lit),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M100 14 C106 32 180 78 180 114 C180 150 140 172 110 150 C109 166 111 177 119 185 L100 185 L81 185 C89 177 91 166 90 150 C60 172 20 150 20 114 C20 78 94 32 100 14 Z' transform=%22translate%28100 101%29 scale%28.82%29 translate%28-100 -101%29%22 fill='none' stroke='%23000' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 .mark::before{
-  inset:-22px;background:var(--rim);filter:blur(16px);
-  -webkit-mask:radial-gradient(closest-side,transparent 62%,#000 84%,transparent 100%),var(--lit);
-  -webkit-mask-composite:source-in;
-  mask:radial-gradient(closest-side,transparent 62%,#000 84%,transparent 100%),var(--lit);
-  mask-composite:intersect;
+  filter:blur(7px);
+  -webkit-mask-image:var(--lit),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M100 14 C106 32 180 78 180 114 C180 150 140 172 110 150 C109 166 111 177 119 185 L100 185 L81 185 C89 177 91 166 90 150 C60 172 20 150 20 114 C20 78 94 32 100 14 Z' transform=%22translate%28100 101%29 scale%28.82%29 translate%28-100 -101%29%22 fill='none' stroke='%23000' stroke-width='12' stroke-linejoin='round'/%3E%3C/svg%3E");
+  mask-image:var(--lit),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M100 14 C106 32 180 78 180 114 C180 150 140 172 110 150 C109 166 111 177 119 185 L100 185 L81 185 C89 177 91 166 90 150 C60 172 20 150 20 114 C20 78 94 32 100 14 Z' transform=%22translate%28100 101%29 scale%28.82%29 translate%28-100 -101%29%22 fill='none' stroke='%23000' stroke-width='12' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
-body.mark-white .mark{
-  background:radial-gradient(circle at 36% 30%,#fff 20%,#f4f4f5 70%,#e4e4e7);
-  box-shadow:0 0 60px #ffffff73,0 0 160px #ffffff38;
-}
-body.mark-white .mark::before,body.mark-white .mark::after{background:#fff}
+body.mark-white .mark::before,body.mark-white .mark::after{--rim:conic-gradient(from calc(var(--ang,0) * 1deg - 55deg),#fff 0deg,#9ca3af 35deg,#fff 70deg,#6b7280 110deg,#fff 111deg)}
