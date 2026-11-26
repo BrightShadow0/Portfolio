@@ -31,3 +31,7 @@ body.home-order header.hero .kicker{order:2;margin-bottom:0}
 @media (prefers-reduced-motion:reduce){.hero-in,.vr{animation:none;transition:none;opacity:1;transform:none;filter:none}}
 .hero h1 .sur{background:none;-webkit-background-clip:initial;background-clip:initial;-webkit-text-fill-color:#fff;color:#fff;filter:none}
 /* scrollytelling mode entry */
+/* events nested under a committee */
+.sub{margin:4px 0 12px 6px;padding-left:20px;border-left:1px solid #ffffff1f}
+.sub .xp-head{padding-top:14px}
+.sub .xp-head h3{font-size:1.05rem;font-weight:600}
