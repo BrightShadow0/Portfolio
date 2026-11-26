@@ -35,3 +35,9 @@ body.home-order header.hero .kicker{order:2;margin-bottom:0}
 .sub{margin:4px 0 12px 6px;padding-left:20px;border-left:1px solid #ffffff1f}
 .sub .xp-head{padding-top:14px}
 .sub .xp-head h3{font-size:1.05rem;font-weight:600}
+/* themed scrollbar */
+html{scrollbar-width:thin;scrollbar-color:#22d3ee47 #0c0f0d}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#0c0f0d}
+::-webkit-scrollbar-thumb{background:#22d3ee40;border-radius:8px;border:2px solid #0c0f0d}
+::-webkit-scrollbar-thumb:hover{background:#22d3ee80}
