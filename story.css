@@ -45,7 +45,7 @@ body:before{
 .spot{
   position:fixed;left:0;top:0;z-index:0;pointer-events:none;
   width:900px;height:900px;margin:-450px 0 0 -450px;border-radius:50%;
-  background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 9%,transparent),transparent 72%);
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 4%,transparent),transparent 72%);
   opacity:0;transition:opacity .6s;
   will-change:transform;
 }
@@ -138,15 +138,7 @@ body.nav-away .dots{opacity:1}
 .mark-halo{
   position:absolute;left:0;top:0;transform:translate(-50%,-50%);
   width:480px;height:480px;border-radius:50%;pointer-events:none;
-  background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 7%,transparent),#ffffff06 55%,transparent 75%);
-}
-.mark-shadow{
-  position:absolute;left:0;top:0;transform-origin:0 0;
-  width:300px;height:110px;margin-top:-55px;pointer-events:none;
-  background:linear-gradient(90deg,#000000f2 12%,#000000a0 45%,transparent 82%);
-  filter:blur(9px);opacity:.95;
-  clip-path:polygon(0 38%,100% 0,100% 100%,0 62%);
-  will-change:transform;
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 5%,transparent),transparent 70%);
 }
 .beat{
   position:absolute;left:50%;top:58%;transform:translateX(-50%);
@@ -327,7 +319,6 @@ body.flat .pin-stage{position:static;height:auto;display:block;padding:120px 0 4
 body.flat .mark-orbit{position:relative;width:132px;height:132px;margin:0 auto 70px}
 body.flat .mark-halo{left:66px;top:66px}
 body.flat .mark{left:66px;top:66px}
-body.flat .mark-shadow{left:66px;top:66px;transform:rotate(135deg) translate(66px,0)}
 body.flat .beat{position:static;transform:none;opacity:1;visibility:visible;margin:0 auto 56px;filter:none}
 body.flat .scroll-hint{display:none}
 body.flat .rv{transition:none;opacity:1;transform:none;filter:none}
