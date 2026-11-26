@@ -67,7 +67,7 @@ function lightTick(t){
  var m = pointerInfo();
  n = Math.max(0, Math.min(1, 1 - (m.d - m.r) / 220));
  follow = n > 0 && !m.inside;
- if (follow) { var da = ((((m.ang - angC + 180) % 360) + 360) % 360) - 180; var stp = da * (1 - Math.exp(-dt * 3.2)); var mx = 140 * dt; angC += Math.max(-mx, Math.min(mx, stp)); }
+ if (follow) { var da = ((((m.ang - angC + 180) % 360) + 360) % 360) - 180; var stp = da * (1 - Math.exp(-dt * 8)); var mx = 360 * dt; angC += Math.max(-mx, Math.min(mx, stp)); }
  }
  if (!follow && !reduce) angC += 30 * dt;
  angC = ((angC % 360) + 360) % 360;
