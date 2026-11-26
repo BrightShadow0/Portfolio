@@ -31,24 +31,43 @@ var markOrbit = document.querySelector('.mark-orbit');
 var beats = Array.prototype.slice.call(document.querySelectorAll('.beat'));
 var hint = document.querySelector('.scroll-hint');
 
-/* ---- orb light: rainbow when the pointer is near, white once clicked ---- */
+/* ---- orb light: travels the rim on its own; follows the pointer when it is in range, brighter when closer; white once clicked ---- */
 var markEl = document.querySelector('.mark');
-function markPoint(e){
- var r = markEl.getBoundingClientRect();
- return { d: Math.hypot(e.clientX - (r.left + r.width/2), e.clientY - (r.top + r.height/2)), r: r.width/2 };
+var markPath = markEl ? markEl.querySelector('path') : null;
+var ptr = null, angC = 0, lvlC = 0.5, lastT = 0;
+function pointerInfo(){
+ var r = markEl.getBoundingClientRect(), dx = ptr.x - (r.left + r.width/2), dy = ptr.y - (r.top + r.height/2);
+ var inside = false;
+ try {
+ var ctm = markPath.getScreenCTM(), svg = markPath.ownerSVGElement, pt = svg.createSVGPoint();
+ pt.x = ptr.x; pt.y = ptr.y;
+ inside = markPath.isPointInFill(pt.matrixTransform(ctm.inverse()));
+ } catch (err) {}
+ return { d: Math.hypot(dx, dy), r: r.width/2, ang: Math.atan2(dx, -dy) * 180 / Math.PI, inside: inside };
 }
-if (markEl && !coarse) {
- addEventListener('pointermove', function(e){
- if (flatMode) return;
- var m = markPoint(e);
- var n = Math.max(0, Math.min(1, 1 - (m.d - m.r) / 220));
- markOrbit.style.setProperty('--near', n.toFixed(2));
- var rr = markEl.getBoundingClientRect();
- markOrbit.style.setProperty('--ang', (Math.atan2(e.clientX - (rr.left + rr.width/2), -(e.clientY - (rr.top + rr.height/2))) * 180 / Math.PI).toFixed(1));
- }, {passive:true});
+function lightTick(t){
+ requestAnimationFrame(lightTick);
+ if (!markEl || !pin || pin.getBoundingClientRect().bottom < 0) return;
+ var dt = Math.min(0.05, (t - lastT) / 1000 || 0.016); lastT = t;
+ var follow = false, n = 0;
+ if (ptr && !coarse && !flatMode) {
+ var m = pointerInfo();
+ n = Math.max(0, Math.min(1, 1 - (m.d - m.r) / 220));
+ follow = n > 0 && !m.inside;
+ if (follow) { var da = ((m.ang - angC + 540) % 360) - 180; angC += da * 0.16; }
+ }
+ if (!follow && !reduce) angC += 30 * dt;
+ var target = follow ? 0.5 + 0.5 * n : 0.5;
+ lvlC += (target - lvlC) * 0.12;
+ markOrbit.style.setProperty('--ang', angC.toFixed(1));
+ markOrbit.style.setProperty('--lvl', lvlC.toFixed(3));
+}
+if (markEl) {
+ requestAnimationFrame(lightTick);
+ addEventListener('pointermove', function(e){ ptr = { x: e.clientX, y: e.clientY }; }, {passive:true});
  addEventListener('click', function(e){
- var m = markPoint(e);
- if (m.r > 0 && m.d <= m.r * 1.1 && parseFloat(markOrbit.style.opacity || '1') > 0.5) body.classList.toggle('mark-white');
+ var r = markEl.getBoundingClientRect(), d = Math.hypot(e.clientX - (r.left + r.width/2), e.clientY - (r.top + r.height/2));
+ if (r.width > 0 && d <= r.width/2 * 1.1 && parseFloat(markOrbit.style.opacity || '1') > 0.5) body.classList.toggle('mark-white');
  });
 }
 
