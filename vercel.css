@@ -41,3 +41,12 @@ html{scrollbar-width:thin;scrollbar-color:#22d3ee47 #0c0f0d}
 ::-webkit-scrollbar-track{background:#0c0f0d}
 ::-webkit-scrollbar-thumb{background:#22d3ee40;border-radius:8px;border:2px solid #0c0f0d}
 ::-webkit-scrollbar-thumb:hover{background:#22d3ee80}
+/* polish: keyboard focus ring, larger tap targets on touch, balanced headings */
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #22d3ee;outline-offset:3px;border-radius:2px}
+h1,h2,h3{text-wrap:balance}
+@media (pointer:coarse),(max-width:700px){
+  .foot-left a{display:inline-block;padding:.7rem .5rem}
+  footer .foot-left{gap:.25rem;margin-left:-.5rem}
+  .contact-block .cta-btn+.cta-btn{margin-top:.75rem}
+  .row-lg a,.home p a,.research a.row .go{padding-block:.35rem}
+}
