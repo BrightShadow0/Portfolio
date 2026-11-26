@@ -1,12 +1,12 @@
 /* Vercel-style override layer */
-:root{--bg:#000;--bg-lift:#0a0a0a;--hairline:#ffffff17;--pill-border:#ffffff2e;--nav-bg:#000000a6;--accent:#c3f588;--grain-opacity:0}
+:root{--bg:#000;--bg-lift:#0a0a0a;--hairline:#ffffff17;--pill-border:#ffffff2e;--nav-bg:#000000a6;--accent:#22d3ee;--ink:#fafafa;--ink-dim:#a1a1aa;--ink-faint:#8a8a93;--bg-lift:#0a0a0a;--code-bg:#07090a;--grain-opacity:0}
 body{background:#000;letter-spacing:-.011em}
 body:after{display:none}
 body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
- background:radial-gradient(60% 45% at 50% -8%,#c3f58824,transparent 70%),
+ background:radial-gradient(60% 45% at 50% -8%,#22d3ee24,transparent 70%),
  linear-gradient(#ffffff08 1px,transparent 1px) 0 0/72px 72px,linear-gradient(90deg,#ffffff08 1px,transparent 1px) 0 0/72px 72px;
  -webkit-mask-image:radial-gradient(80% 60% at 50% 0,#000 20%,transparent 80%);mask-image:radial-gradient(80% 60% at 50% 0,#000 20%,transparent 80%)}
-.hero h1{letter-spacing:-.05em;font-weight:700;background:linear-gradient(180deg,#fff 30%,#ffffff8c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1{letter-spacing:-.05em;font-weight:700;color:#fff}
 .hero h1 em{-webkit-text-fill-color:var(--accent);color:var(--accent)}
 .kicker{display:inline-block}
 .kicker span{border:1px solid var(--pill-border);border-radius:999px;padding:.35rem .8rem;background:#ffffff08;font-size:.68rem;letter-spacing:.14em}
@@ -17,7 +17,7 @@ body>nav{border-bottom-color:#ffffff14}
 .row:hover{background:#ffffff08;border-color:#ffffff24;transform:translateY(-2px)}
 .quick a{transition:all .2s}
 .quick a:hover{box-shadow:0 0 0 4px #ffffff14}
-.cta-btn{transition:transform .2s,box-shadow .2s}.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px #c3f58833}
+.cta-btn{transition:transform .2s,box-shadow .2s}.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px #22d3ee33}
 /* animations */
 @keyframes vIn{from{opacity:0;transform:translateY(18px);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
 .hero-in{animation:vIn .8s cubic-bezier(.22,1,.36,1) both;animation-delay:var(--d,0s)}
