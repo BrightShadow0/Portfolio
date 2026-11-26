@@ -34,7 +34,7 @@ var hint = document.querySelector('.scroll-hint');
 /* ---- orb light: travels the rim on its own; follows the pointer when it is in range, brighter when closer; white once clicked ---- */
 var markEl = document.querySelector('.mark');
 var markPath = markEl ? markEl.querySelector('path') : null;
-var ptr = null, angC = 0, lvlC = 0.5, lastT = 0;
+var ptr = null, angC = 0, lvlC = 0.42, lastT = 0;
 function pointerInfo(){
  var r = markEl.getBoundingClientRect(), dx = ptr.x - (r.left + r.width/2), dy = ptr.y - (r.top + r.height/2);
  var inside = false;
@@ -52,6 +52,12 @@ if (markEl && !markOrbit.querySelector('.glow')) {
  g.appendChild(document.createElement('i')); markOrbit.insertBefore(g, markEl);
  });
 }
+if (markEl && !markOrbit.querySelector('.gr')) {
+ ['gr0','gr1'].forEach(function(c){
+ var g = document.createElement('div'); g.className = 'glow gr ' + c; g.setAttribute('aria-hidden','true');
+ g.appendChild(document.createElement('i')); markOrbit.insertBefore(g, markEl.nextSibling);
+ });
+}
 function lightTick(t){
  requestAnimationFrame(lightTick);
  if (!markEl || !pin || pin.getBoundingClientRect().bottom < 0) return;
@@ -65,7 +71,7 @@ function lightTick(t){
  }
  if (!follow && !reduce) angC += 30 * dt;
  angC = ((angC % 360) + 360) % 360;
- var target = 0.06; if (ptr && !coarse && !flatMode) { target = (m.inside) ? 1 : (follow ? 0.06 + 0.94 * Math.pow(n, 1.1) : 0.06); }
+ var AMB = 0.42; var target = AMB; if (ptr && !coarse && !flatMode) { target = (m.inside) ? 1 : (follow ? AMB + (1 - AMB) * Math.pow(n, 1.1) : AMB); }
  lvlC += (target - lvlC) * (1 - Math.exp(-dt * 5));
  markOrbit.style.setProperty('--ang', angC.toFixed(1));
  markOrbit.style.setProperty('--lvl', lvlC.toFixed(3));
