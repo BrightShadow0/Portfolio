@@ -61,9 +61,10 @@ function lightTick(t){
  var m = pointerInfo();
  n = Math.max(0, Math.min(1, 1 - (m.d - m.r) / 220));
  follow = n > 0 && !m.inside;
- if (follow) { var da = ((m.ang - angC + 540) % 360) - 180; var stp = da * (1 - Math.exp(-dt * 3.2)); var mx = 140 * dt; angC += Math.max(-mx, Math.min(mx, stp)); }
+ if (follow) { var da = ((((m.ang - angC + 180) % 360) + 360) % 360) - 180; var stp = da * (1 - Math.exp(-dt * 3.2)); var mx = 140 * dt; angC += Math.max(-mx, Math.min(mx, stp)); }
  }
  if (!follow && !reduce) angC += 30 * dt;
+ angC = ((angC % 360) + 360) % 360;
  var target = 0.06; if (ptr && !coarse && !flatMode) { target = (m.inside) ? 1 : (follow ? 0.06 + 0.94 * Math.pow(n, 1.1) : 0.06); }
  lvlC += (target - lvlC) * (1 - Math.exp(-dt * 5));
  markOrbit.style.setProperty('--ang', angC.toFixed(1));
