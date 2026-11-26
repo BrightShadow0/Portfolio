@@ -402,3 +402,9 @@ body.nav-away .classic-nav{transform:translateY(-100%);opacity:0;pointer-events:
 .mark-orbit .gr{opacity:calc(.3 + var(--lvl,.42) * .12)}
 .mark-orbit .gr.gr1{filter:blur(10px);--s:1.06;opacity:calc(.35 + var(--lvl,.42) * .15)}
 body.mark-white .mark-orbit .gr i{background:conic-gradient(from calc(var(--ang,0) * 1deg),#fff,#9ca3af,#fff,#6b7280,#fff)}
+/* themed scrollbar */
+html{scrollbar-width:thin;scrollbar-color:#22d3ee47 #050505}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#050505}
+::-webkit-scrollbar-thumb{background:#22d3ee40;border-radius:8px;border:2px solid #050505}
+::-webkit-scrollbar-thumb:hover{background:#22d3ee80}
