@@ -357,3 +357,10 @@ body.flat .finale{padding:160px 0}
 body.mark-white .mark::before,body.mark-white .mark::after{--rim:conic-gradient(from calc(var(--ang,0) * 1deg - 55deg),#fff 0deg,#9ca3af 35deg,#fff 70deg,#6b7280 110deg,#fff 111deg)}
 
 .spot{display:none}
+
+
+/* narrow phones: keep the whole top nav on screen */
+@media (width<=560px){
+  .classic-nav .nav-inner{width:100%;padding-inline:10px;justify-content:space-between;gap:0}
+  .classic-nav a{padding:.35rem .35rem;font-size:.74rem}
+}
