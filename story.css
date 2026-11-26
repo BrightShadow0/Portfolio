@@ -357,3 +357,23 @@ body.flat .finale{padding:160px 0}
   .pipe .brk-dot{opacity:1;animation:none}
   .watermark{display:none}
 }
+
+
+/* orb light: rainbow near the pointer, white after a click */
+.mark{transition:box-shadow .5s,background .5s}
+.mark-halo::before{
+  content:"";position:absolute;inset:-6%;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 0deg,#ff3b6b,#ff9f1c,#ffe66d,#3ddc97,#22d3ee,#6366f1,#c026d3,#ff3b6b);
+  filter:blur(44px);opacity:calc(var(--near,0) * .6);
+  -webkit-mask:radial-gradient(closest-side,transparent 24%,#000 46%,transparent 98%);
+  mask:radial-gradient(closest-side,transparent 24%,#000 46%,transparent 98%);
+  animation:markspin 9s linear infinite;transition:opacity .35s;
+}
+@keyframes markspin{to{transform:rotate(360deg)}}
+body.mark-white .mark{
+  background:radial-gradient(circle at 36% 30%,#fff 20%,#f4f4f5 70%,#e4e4e7);
+  box-shadow:0 0 60px #ffffff73,0 0 160px #ffffff38;
+}
+body.mark-white .mark-halo{background:radial-gradient(closest-side,#ffffff14,transparent 70%)}
+body.mark-white .mark-halo::before{opacity:0}
+@media (prefers-reduced-motion:reduce){.mark-halo::before{animation:none}}
