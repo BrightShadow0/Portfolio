@@ -412,3 +412,24 @@ html{scrollbar-width:thin;scrollbar-color:#22d3ee47 #050505}
 .mark-orbit .gr{opacity:.95}
 .mark-orbit .gr.gr1{opacity:.45}
 .mark-orbit .gr i{filter:brightness(1.15) saturate(1.1)}
+
+/* ---- v8: Vercel-triangle light. No visible outline or panel: the shape is dark and only light suggests it.
+   Colour is the only thing the click changes. Default is monochrome white; body.mark-white (set by a click on the spade)
+   shows the spectrum, fixed by position (magenta/red left, blue/cyan right, green bottom, violet top) and blended continuously.
+   The edge ring is stationary; the glow (lit arc, bloom) is what travels, follows the pointer and breathes, identically in both states. ---- */
+.mark svg path{stroke:none}
+.mark::before,.mark::after{--rim:linear-gradient(#fff,#fff)}
+.mark-orbit{--rim-g:linear-gradient(#fff,#fff)}
+.mark-orbit .gr i{background:linear-gradient(#fff,#fff);filter:brightness(1.2)}
+body.mark-white .mark::before,body.mark-white .mark::after{--rim:conic-gradient(from 0deg at 50% 52%,hsl(280 100% 60%) 0deg,hsl(235 100% 60%) 60deg,hsl(205 100% 60%) 100deg,hsl(165 100% 60%) 140deg,hsl(130 100% 60%) 180deg,hsl(55 100% 60%) 220deg,hsl(15 100% 60%) 250deg,hsl(345 100% 60%) 285deg,hsl(315 100% 60%) 320deg,hsl(280 100% 60%) 360deg)}
+body.mark-white .mark-orbit{--rim-g:conic-gradient(from 0deg at 50% 52%,hsl(280 100% 60%) 0deg,hsl(235 100% 60%) 60deg,hsl(205 100% 60%) 100deg,hsl(165 100% 60%) 140deg,hsl(130 100% 60%) 180deg,hsl(55 100% 60%) 220deg,hsl(15 100% 60%) 250deg,hsl(345 100% 60%) 285deg,hsl(315 100% 60%) 320deg,hsl(280 100% 60%) 360deg)}
+body.mark-white .mark-orbit .gr i{background:conic-gradient(from 0deg at 50% 52%,hsl(280 100% 60%) 0deg,hsl(235 100% 60%) 60deg,hsl(205 100% 60%) 100deg,hsl(165 100% 60%) 140deg,hsl(130 100% 60%) 180deg,hsl(55 100% 60%) 220deg,hsl(15 100% 60%) 250deg,hsl(345 100% 60%) 285deg,hsl(315 100% 60%) 320deg,hsl(280 100% 60%) 360deg)}
+.mark-orbit .gr.gr0{filter:blur(2px);opacity:.4}
+.mark-orbit .gr.gr1{filter:blur(12px);opacity:.5}
+.mark::after{filter:brightness(calc(1.25 + var(--lvl,.42) * .9))}
+.mark-orbit .glow i{filter:brightness(calc(1.6 + var(--lvl,.42) * .8))}
+/* spectrum hues carry less light than white, so lift them to the same visual strength */
+body.mark-white .mark-orbit .glow i{filter:brightness(calc(2.7 + var(--lvl,.42) * 1.1)) saturate(1.2)}
+body.mark-white .mark::after{filter:brightness(calc(1.7 + var(--lvl,.42) * 1.1)) saturate(1.2)}
+body.mark-white .mark-orbit .gr i{filter:brightness(1.7) saturate(1.2)}
+body.mark-white .mark-orbit .glow{opacity:calc(.55 + var(--lvl,.42) * var(--lvl,.42) * .45)}
