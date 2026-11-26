@@ -436,3 +436,21 @@ body.mark-white .mark-orbit .glow{opacity:calc(.55 + var(--lvl,.42) * var(--lvl,
 /* v9: no edge line in spectrum state; spade is pure black, only the glow shows */
 body.mark-white .mark-orbit .gr.gr0{opacity:0}
 body.mark-white .mark::before{opacity:0}
+/* v11: dim base light around the whole spade; the moving light is a wave: head rises, sections behind ease back to base */
+.mark::before,.mark::after{--lit:conic-gradient(from calc(var(--ang,0) * 1deg - 105deg),transparent 0deg,rgba(0,0,0,.12) 25deg,rgba(0,0,0,.3) 50deg,rgba(0,0,0,.6) 78deg,#000 98deg,rgba(0,0,0,.25) 112deg,transparent 125deg)}
+.mark-orbit{--lit-w:conic-gradient(from calc(var(--ang,0) * 1deg - 125deg),transparent 0deg,rgba(0,0,0,.12) 30deg,rgba(0,0,0,.3) 60deg,rgba(0,0,0,.6) 95deg,#000 118deg,rgba(0,0,0,.25) 135deg,transparent 150deg)}
+.mark-orbit .gr.gr0{opacity:.5}
+.mark-orbit .gr.gr1{opacity:.55}
+body.mark-white .mark-orbit .gr.gr0{opacity:0}
+body.mark-white .mark-orbit .gr.gr1{opacity:.6}
+/* v11b: neon spectrum */
+body.mark-white .mark-orbit .glow i{filter:brightness(calc(3.4 + var(--lvl,.42) * 1.4)) saturate(1.9)}
+body.mark-white .mark::after{filter:brightness(calc(2.2 + var(--lvl,.42) * 1.3)) saturate(1.9)}
+body.mark-white .mark-orbit .gr i{filter:brightness(2.2) saturate(1.9)}
+body.mark-white .mark-orbit .gr.gr1{opacity:.95}
+body.mark-white .mark-orbit .glow{opacity:calc(.75 + var(--lvl,.42) * .25)}
+/* v12: less white clipping, more saturation */
+body.mark-white .mark-orbit .glow i{filter:brightness(calc(1.5 + var(--lvl,.42) * .7)) saturate(3)}
+body.mark-white .mark::after{filter:brightness(calc(1.3 + var(--lvl,.42) * .7)) saturate(3)}
+body.mark-white .mark-orbit .gr i{filter:brightness(1.3) saturate(3)}
+body.mark-white .mark-orbit .glow{opacity:1}
