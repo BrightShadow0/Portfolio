@@ -65,14 +65,14 @@ function lightTick(t){
  var follow = false, n = 0;
  if (ptr && !coarse && !flatMode) {
  var m = pointerInfo();
- n = Math.max(0, Math.min(1, 1 - (m.d - m.r) / 220));
+ var q = Math.max(0, Math.min(1, 1 - (m.d - m.r) / 560)); n = q * q * (3 - 2 * q);
  follow = n > 0 && !m.inside;
- if (follow) { var da = ((((m.ang - angC + 180) % 360) + 360) % 360) - 180; var stp = da * (1 - Math.exp(-dt * 8)); var mx = 360 * dt; angC += Math.max(-mx, Math.min(mx, stp)); }
+ if (follow) { var da = ((((m.ang - angC + 180) % 360) + 360) % 360) - 180; var stp = da * (1 - Math.exp(-dt * 13)); var mx = 540 * dt; angC += Math.max(-mx, Math.min(mx, stp)); }
  }
  if (!follow && !reduce) angC += 30 * dt;
  angC = ((angC % 360) + 360) % 360;
- var AMB = 0.42; var target = AMB; if (ptr && !coarse && !flatMode) { target = (m.inside) ? 1 : (follow ? AMB + (1 - AMB) * Math.pow(n, 1.1) : AMB); }
- lvlC += (target - lvlC) * (1 - Math.exp(-dt * 5));
+ var AMB = 0.42; var target = AMB; if (ptr && !coarse && !flatMode) { target = (m.inside) ? 1 : (follow ? AMB + (1 - AMB) * Math.pow(n, .85) : AMB); }
+ lvlC += (target - lvlC) * (1 - Math.exp(-dt * 7));
  markOrbit.style.setProperty('--ang', angC.toFixed(1));
  markOrbit.style.setProperty('--lvl', lvlC.toFixed(3));
 }
